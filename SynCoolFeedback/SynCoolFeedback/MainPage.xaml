@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SynCoolFeedback.MainPage" xmlns:local="clr-namespace:SynCoolFeedback"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom">
+
+    <local:Ripetizioni Title="Ripetizioni" IconImageSource="ripetizioni.png"/>
+    <local:GestioneAppunti Title="Appunti" IconImageSource="appunti.png"/>
+    
+    <ContentPage Title="Feedback" IconImageSource="feedback.png">
+
+        <ContentPage.ToolbarItems>
+            <ToolbarItem Icon="profilo.png" Clicked="ToolbarItem_Clicked" Order="Primary" Priority="0"/>
+
+
+        </ContentPage.ToolbarItems>
+
+        <ContentPage.Resources>
+            <Style TargetType="Button">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="White" />
+                                    <Setter Property="TextColor" Value="Red" />
+                                    <Setter Property="BorderWidth" Value="2" />
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Red" />
+                                    <Setter Property="TextColor" Value="White" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ContentPage.Resources>
+
+
+
+        <Grid ColumnSpacing="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <BoxView BackgroundColor="Red" Grid.Row="0" Grid.ColumnSpan="2" />
+            <Label Text="Area feedback" TextColor="White" HorizontalOptions="Center" FontSize="60" Grid.ColumnSpan="2" VerticalOptions="Center" />
+
+
+            <Button x:Name="bottoneStudenti" Grid.Column="0" Grid.Row="1" Text="Classifica studenti" Clicked="bottoneStudenti_Clicked"/>
+            <!-- Bottone lista studenti />-->
+            <Button x:Name="bottoneTutor" Grid.Column="1" Grid.Row="1" Text="Classifica tutor" Clicked="bottoneTutor_Clicked" />
+            <!-- bottone lista tutor/>-->
+
+
+            <ListView x:Name="listaClassifica" SeparatorColor="Gray" Grid.Row="2" Grid.ColumnSpan="2" HasUnevenRows="True" VerticalOptions="FillAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <!--<TextCell Text="{Binding username}" Detail="{Binding mediaVoti}"/>-->
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="5">
+
+                                <Label Text = "{Binding username}" />
+                                <Label Text = "{Binding mediaVoti}" />
+                                <Image Source="full_star.png"></Image>
+                            </StackLayout>
+
+                        </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+            <!--<ListView x:Name="classificaTutor" SeparatorColor="Gray">
+            <ListView.ItemTemplate>
+                
+            <DataTemplate>
+                <TextCell Text="{Binding username}" Detail="{Binding mediaVoti}"/>
+               
+            </DataTemplate>
+            </ListView.ItemTemplate>
+            </ListView>-->
+
+
+
+
+
+            <!--<StackLayout>
+            <Label Text="Feedback"
+                   HorizontalOptions="Center"
+                   FontSize="Large"/>
+
+            <fRating:RatingBar x:Name="Rating"
+                               SelectedStarValue="1"
+                               ImageHeight="30"
+                               ImageWidth="30"
+                               HorizontalOptions="Center"
+                               FlowDirection="LeftToRight"
+                               EmptyStarImage="empty_star"
+                               FillStarImage="full_star">
+            
+            </fRating:RatingBar>
+            <Button Text="Invia voto"
+                    x:Name="InviaVoto"
+                    Clicked="InviaVoto_Clicked"></Button>
+        </StackLayout>-->
+        </Grid>
+
+
+    </ContentPage>
+
+
+
+
+</TabbedPage>
